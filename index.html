@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imersão Excel OEL - Ao Vivo</title>
+    <title>Imersão Excel OEL - Planos</title>
     <style>
         /* --- CONFIGURAÇÕES GERAIS --- */
         :root {
             --cor-primaria: #107C41; /* Verde Excel */
             --cor-secundaria: #054b25; /* Verde Escuro */
-            --cor-destaque: #d32f2f; /* Vermelho para Urgência/Ao Vivo */
-            --cor-fundo: #f4f4f4;
+            --cor-destaque: #FFD700; /* Dourado para o Premium */
+            --cor-fundo: #f8f9fa;
             --cor-texto: #333;
             --branco: #ffffff;
         }
@@ -21,13 +21,13 @@
 
         h1, h2, h3 { line-height: 1.2; margin-bottom: 20px; color: var(--cor-secundaria); }
         
-        p { margin-bottom: 15px; font-size: 1.1rem; }
+        p { margin-bottom: 15px; font-size: 1rem; color: #555; }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
         /* --- BADGE AO VIVO --- */
         .badge-live {
-            background-color: var(--cor-destaque);
+            background-color: #d32f2f;
             color: white;
             padding: 5px 15px;
             text-transform: uppercase;
@@ -36,73 +36,118 @@
             border-radius: 50px;
             display: inline-block;
             margin-bottom: 15px;
-            animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(211, 47, 47, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
-        }
-
-        /* --- BOTÕES (CTA) --- */
+        /* --- BOTÕES --- */
         .btn {
             display: inline-block;
-            background: #FF6D00; /* Laranja continua para o botão */
+            background: #107C41;
             color: var(--branco);
-            padding: 15px 40px;
-            font-size: 1.2rem;
+            padding: 12px 20px;
+            font-size: 1rem;
             font-weight: bold;
             text-decoration: none;
             border-radius: 5px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: transform 0.2s;
             text-align: center;
-            border-bottom: 4px solid #c45400;
+            width: 100%;
+            margin-top: auto; /* Empurra o botão para o fundo do card */
         }
+        .btn:hover { transform: translateY(-2px); background: #0c5e31; }
+        
+        .btn-outline { background: transparent; border: 2px solid #107C41; color: #107C41; }
+        .btn-outline:hover { background: #107C41; color: white; }
 
-        .btn:hover { transform: translateY(-2px); }
+        /* Botão Destaque (Plano 3) */
+        .btn-gold { 
+            background: linear-gradient(45deg, #FFD700, #FFA500); 
+            color: #333; 
+            border: none;
+            box-shadow: 0 4px 10px rgba(255, 165, 0, 0.3);
+        }
+        .btn-gold:hover { transform: scale(1.05); }
 
-        /* --- HERO SECTION (TOPO) --- */
+        /* --- HERO SECTION --- */
         .hero {
             background: linear-gradient(rgba(5, 75, 37, 0.9), rgba(5, 75, 37, 0.9)), url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             color: var(--branco);
-            padding: 100px 0;
+            padding: 80px 0;
             text-align: center;
         }
+        .hero h1 { color: var(--branco); font-size: 2.5rem; }
+        .hero p { color: #eee; font-size: 1.2rem; }
 
-        .hero h1 { color: var(--branco); font-size: 2.8rem; margin-bottom: 20px; }
-        .hero p { font-size: 1.3rem; margin-bottom: 40px; max-width: 800px; margin: 0 auto 40px auto; }
-        
-        /* --- DIFERENCIAIS AO VIVO --- */
-        .diferenciais { padding: 60px 0; background: var(--branco); }
-        .grid-diferenciais { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; text-align: center; }
-        .item-dif i { font-size: 2rem; color: var(--cor-primaria); margin-bottom: 15px; display: block; }
-
-        /* --- DATA E CRONOGRAMA --- */
-        .agenda { padding: 80px 0; background-color: #e8f5e9; text-align: center; }
-        .card-data {
-            background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: 30px auto;
-            border-left: 10px solid var(--cor-destaque);
+        /* --- SEÇÃO DE PREÇOS --- */
+        .tabela-precos { padding: 60px 0; }
+        .pricing-grid {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Alinha pelo topo */
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 40px;
         }
 
-        /* --- PREÇO --- */
-        .oferta { padding: 80px 0; background: #111; color: var(--branco); text-align: center; }
-        .preco-por { font-size: 3.5rem; font-weight: bold; color: #4CAF50; margin: 20px 0; }
-        .vagas-alert { color: #ffeb3b; font-weight: bold; margin-bottom: 20px; border: 1px solid #ffeb3b; display: inline-block; padding: 5px 15px; border-radius: 4px; }
+        .card-preco {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: left;
+            width: 320px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            min-height: 550px; /* Altura mínima igual para todos */
+        }
 
-        /* --- RODAPÉ --- */
-        footer { background: #000; color: #777; text-align: center; padding: 20px 0; }
+        .card-preco:hover { border-color: var(--cor-primaria); }
+
+        /* Destaque para o plano EXPERT */
+        .card-destaque {
+            border: 2px solid #FFA500;
+            box-shadow: 0 10px 30px rgba(255, 165, 0, 0.15);
+            transform: scale(1.03);
+            z-index: 2;
+        }
+        .card-destaque:hover { transform: scale(1.05); }
+        
+        .tag-recomenda {
+            background: #FFA500;
+            color: #000;
+            padding: 5px 15px;
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .plano-titulo { font-size: 1.3rem; font-weight: 700; color: #333; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+        .plano-desc { font-size: 0.9rem; color: #666; min-height: 60px; margin-bottom: 15px; }
+
+        .preco-container { margin: 20px 0; padding: 15px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; text-align: center; }
+        .preco-de { text-decoration: line-through; color: #999; font-size: 0.9rem; }
+        .preco-por { font-size: 2.5rem; font-weight: 800; color: var(--cor-primaria); line-height: 1; }
+        .preco-texto { font-size: 0.9rem; color: #777; }
+
+        .lista-beneficios { list-style: none; margin-bottom: 30px; }
+        .lista-beneficios li { margin-bottom: 12px; font-size: 0.95rem; display: flex; align-items: flex-start; gap: 10px; }
+        .check { color: var(--cor-primaria); font-weight: bold; min-width: 20px; }
+        .check-gold { color: #FFA500; }
 
         /* --- RESPONSIVIDADE --- */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
+        @media (max-width: 900px) {
+            .pricing-grid { flex-direction: column; align-items: center; }
+            .card-destaque { transform: scale(1); }
+            .card-destaque:hover { transform: scale(1); }
+            .card-preco { width: 100%; max-width: 350px; min-height: auto; }
         }
     </style>
 </head>
@@ -110,86 +155,84 @@
 
     <header class="hero">
         <div class="container">
-            <span class="badge-live">🔴 Turma Ao Vivo no Zoom</span>
-            <h1>Chega de Cursos Gravados que <br>Você Nunca Termina</h1>
-            <p>Aprenda Excel do zero ao Dashboard com o <strong>Método OEL</strong>. Tire suas dúvidas em tempo real e saia com o projeto pronto.</p>
-            <a href="#oferta" class="btn">QUERO GARANTIR MINHA VAGA</a>
-            <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">📅 Próxima turma: <strong>[DATA AQUI]</strong></p>
+            <span class="badge-live">🔴 Turma Ao Vivo</span>
+            <h1>Escolha seu Plano de Acesso<br>ao Método OEL</h1>
+            <p>Do básico à automação. Escolha o tempo ideal para sua jornada.</p>
         </div>
     </header>
 
-    <section class="diferenciais">
+    <section class="tabela-precos">
         <div class="container">
-            <h2 style="text-align: center;">Por que fazer a Imersão OEL Ao Vivo?</h2>
-            <div class="grid-diferenciais">
-                <div class="item-dif">
-                    <h3>🤝 Mentoria Real</h3>
-                    <p>Travou na fórmula? Compartilhe sua tela e eu te ajudo a destravar na hora. Sem esperar dias por suporte.</p>
+            
+            <div class="pricing-grid">
+                
+                <div class="card-preco">
+                    <h3 class="plano-titulo">🥉 INTENSIVO RÁPIDO</h3>
+                    <p class="plano-desc">Ideal para quem tem urgência em resolver problemas pontuais ou quer testar o método.</p>
+                    
+                    <div class="preco-container">
+                        <span class="preco-de">De R$ 297</span>
+                        <div class="preco-por">R$ 197</div>
+                        <span class="preco-texto">à vista</span>
+                    </div>
+                    
+                    <ul class="lista-beneficios">
+                        <li><span class="check">✔</span> Acesso por 3 Meses</li>
+                        <li><span class="check">✔</span> Ritmo: 1 aula liberada/semana</li>
+                        <li><span class="check">✔</span> Foco no Essencial</li>
+                        <li style="opacity: 0.5;">✖ Suporte estendido</li>
+                        <li style="opacity: 0.5;">✖ Aulas de Power BI</li>
+                    </ul>
+                    <a href="LINK_CHECKOUT_197" class="btn btn-outline">Selecionar Intensivo</a>
                 </div>
-                <div class="item-dif">
-                    <h3>🚀 Sem Procrastinação</h3>
-                    <p>Com dia e hora marcados, você assume um compromisso real com seu aprendizado. Começa e termina.</p>
+
+                <div class="card-preco">
+                    <h3 class="plano-titulo" style="color: #555;">🥈 PROFISSIONAL</h3>
+                    <p class="plano-desc">Para quem precisa de mais tempo para praticar e revisar os conteúdos com calma.</p>
+                    
+                    <div class="preco-container">
+                        <div class="preco-por" style="color: #555;">R$ 497</div>
+                        <span class="preco-texto">Investimento Único</span>
+                    </div>
+                    
+                    <ul class="lista-beneficios">
+                        <li><span class="check">✔</span> Acesso por 6 Meses</li>
+                        <li><span class="check">✔</span> Cronograma mais flexível</li>
+                        <li><span class="check">✔</span> Suporte a dúvidas por mais tempo</li>
+                        <li><span class="check">✔</span> Pack de Planilhas</li>
+                    </ul>
+                    <a href="LINK_CHECKOUT_497" class="btn btn-outline">Selecionar Profissional</a>
                 </div>
-                <div class="item-dif">
-                    <h3>📂 Networking</h3>
-                    <p>Conecte-se com outros profissionais que buscam crescimento e troque experiências de mercado.</p>
+
+                <div class="card-preco card-destaque">
+                    <span class="tag-recomenda">⭐ RECOMENDADO</span>
+                    <h3 class="plano-titulo" style="color: #d88e00;">🥇 EXPERT 360º</h3>
+                    <p class="plano-desc">Garanta a atualização completa (Excel + Power BI + VBA) sem pagar nada a mais.</p>
+                    
+                    <div class="preco-container">
+                        <div class="preco-por" style="color: #d88e00;">R$ 997</div>
+                        <span class="preco-texto">Ou 12x no cartão</span>
+                    </div>
+                    
+                    <ul class="lista-beneficios">
+                        <li><span class="check check-gold">★</span> <strong>Acesso completo por 1 ANO</strong></li>
+                        <li><span class="check check-gold">★</span> Acesso garantido ao <strong>Power BI + VBA</strong></li>
+                        <li><span class="check check-gold">★</span> Proteção contra aumento de preço</li>
+                        <li><span class="check check-gold">★</span> Suporte Prioritário</li>
+                        <li><span class="check check-gold">★</span> Mentoria em Grupo</li>
+                    </ul>
+                    <a href="LINK_CHECKOUT_997" class="btn btn-gold">QUERO SER EXPERT 360º</a>
                 </div>
+
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px; padding: 20px; background: #fff; border-radius: 8px;">
+                <p style="margin: 0;">🔒 <strong>Garantia Total:</strong> Experimente qualquer plano por 7 dias. Se não gostar, devolvemos 100% do valor.</p>
             </div>
         </div>
     </section>
 
-    <section class="agenda">
-        <div class="container">
-            <h2>O que vamos construir juntos?</h2>
-            <p>O Método OEL (Organização, Eficiência, Liberdade) aplicado na prática:</p>
-            
-            <div class="card-data">
-                <h3>🗓️ Cronograma da Turma</h3>
-                <ul style="text-align: left; list-style: none; margin-top: 20px;">
-                    <li style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
-                        <strong>Encontro 1: Organização (O)</strong><br>
-                        Limpeza de bases e estruturação de dados.
-                    </li>
-                    <li style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
-                        <strong>Encontro 2: Eficiência (E)</strong><br>
-                        Fórmulas lógicas (SE, E, OU) e de busca (PROCV, PROCX).
-                    </li>
-                    <li style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
-                        <strong>Encontro 3: Análise</strong><br>
-                        Tabelas Dinâmicas avançadas e inteligência de dados.
-                    </li>
-                    <li>
-                        <strong>Encontro 4: Liberdade (L)</strong><br>
-                        Montagem do Dashboard Final e Automação.
-                    </li>
-                </ul>
-                <br>
-                <p style="font-size: 0.9rem; color: #666;">*Todas as aulas ficam gravadas caso você perca algum dia.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="oferta" class="oferta">
-        <div class="container">
-            <span class="vagas-alert">⚠️ Restam poucas vagas para esta turma</span>
-            <h2>Participe da Próxima Turma</h2>
-            <p>Mentoria em Grupo + Gravações + Material de Apoio</p>
-            
-            <div class="preco-box">
-                <p style="text-decoration: line-through; color: #777;">De R$ 997,00</p>
-                <p class="preco-por">R$ 497,00</p>
-                <p>ou 12x de R$ 49,90</p>
-            </div>
-            <br>
-            <a href="LINK_DO_CHECKOUT" class="btn">QUERO MINHA VAGA AGORA</a>
-            
-            <div class="garantia" style="margin-top: 30px;">
-                <p>🛡️ Garantia incondicional de 7 dias.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
+    <footer style="background: #111; color: #777; padding: 20px 0; text-align: center;">
         <div class="container">
             <p>&copy; 2025 Método OEL - Todos os direitos reservados.</p>
         </div>
