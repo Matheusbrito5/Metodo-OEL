@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imersão Excel OEL - Ao Vivo</title>
+    <style>
+        /* --- CONFIGURAÇÕES GERAIS --- */
+        :root {
+            --cor-primaria: #107C41; /* Verde Excel */
+            --cor-secundaria: #054b25; /* Verde Escuro */
+            --cor-destaque: #d32f2f; /* Vermelho para Urgência/Ao Vivo */
+            --cor-fundo: #f4f4f4;
+            --cor-texto: #333;
+            --branco: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        
+        body { line-height: 1.6; color: var(--cor-texto); background-color: var(--cor-fundo); }
+
+        h1, h2, h3 { line-height: 1.2; margin-bottom: 20px; color: var(--cor-secundaria); }
+        
+        p { margin-bottom: 15px; font-size: 1.1rem; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- BADGE AO VIVO --- */
+        .badge-live {
+            background-color: var(--cor-destaque);
+            color: white;
+            padding: 5px 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 0.8rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(211, 47, 47, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+        }
+
+        /* --- BOTÕES (CTA) --- */
+        .btn {
+            display: inline-block;
+            background: #FF6D00; /* Laranja continua para o botão */
+            color: var(--branco);
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            text-align: center;
+            border-bottom: 4px solid #c45400;
+        }
+
+        .btn:hover { transform: translateY(-2px); }
+
+        /* --- HERO SECTION (TOPO) --- */
+        .hero {
+            background: linear-gradient(rgba(5, 75, 37, 0.9), rgba(5, 75, 37, 0.9)), url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            color: var(--branco);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h1 { color: var(--branco); font-size: 2.8rem; margin-bottom: 20px; }
+        .hero p { font-size: 1.3rem; margin-bottom: 40px; max-width: 800px; margin: 0 auto 40px auto; }
+        
+        /* --- DIFERENCIAIS AO VIVO --- */
+        .diferenciais { padding: 60px 0; background: var(--branco); }
+        .grid-diferenciais { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; text-align: center; }
+        .item-dif i { font-size: 2rem; color: var(--cor-primaria); margin-bottom: 15px; display: block; }
+
+        /* --- DATA E CRONOGRAMA --- */
+        .agenda { padding: 80px 0; background-color: #e8f5e9; text-align: center; }
+        .card-data {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 30px auto;
+            border-left: 10px solid var(--cor-destaque);
+        }
+
+        /* --- PREÇO --- */
+        .oferta { padding: 80px 0; background: #111; color: var(--branco); text-align: center; }
+        .preco-por { font-size: 3.5rem; font-weight: bold; color: #4CAF50; margin: 20px 0; }
+        .vagas-alert { color: #ffeb3b; font-weight: bold; margin-bottom: 20px; border: 1px solid #ffeb3b; display: inline-block; padding: 5px 15px; border-radius: 4px; }
+
+        /* --- RODAPÉ --- */
+        footer { background: #000; color: #777; text-align: center; padding: 20px 0; }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <span class="badge-live">🔴 Turma Ao Vivo no Zoom</span>
+            <h1>Chega de Cursos Gravados que <br>Você Nunca Termina</h1>
+            <p>Aprenda Excel do zero ao Dashboard com o <strong>Método OEL</strong>. Tire suas dúvidas em tempo real e saia com o projeto pronto.</p>
+            <a href="#oferta" class="btn">QUERO GARANTIR MINHA VAGA</a>
+            <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">📅 Próxima turma: <strong>[DATA AQUI]</strong></p>
+        </div>
+    </header>
+
+    <section class="diferenciais">
+        <div class="container">
+            <h2 style="text-align: center;">Por que fazer a Imersão OEL Ao Vivo?</h2>
+            <div class="grid-diferenciais">
+                <div class="item-dif">
+                    <h3>🤝 Mentoria Real</h3>
+                    <p>Travou na fórmula? Compartilhe sua tela e eu te ajudo a destravar na hora. Sem esperar dias por suporte.</p>
+                </div>
+                <div class="item-dif">
+                    <h3>🚀 Sem Procrastinação</h3>
+                    <p>Com dia e hora marcados, você assume um compromisso real com seu aprendizado. Começa e termina.</p>
+                </div>
+                <div class="item-dif">
+                    <h3>📂 Networking</h3>
+                    <p>Conecte-se com outros profissionais que buscam crescimento e troque experiências de mercado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="agenda">
+        <div class="container">
+            <h2>O que vamos construir juntos?</h2>
+            <p>O Método OEL (Organização, Eficiência, Liberdade) aplicado na prática:</p>
+            
+            <div class="card-data">
+                <h3>🗓️ Cronograma da Turma</h3>
+                <ul style="text-align: left; list-style: none; margin-top: 20px;">
+                    <li style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
+                        <strong>Encontro 1: Organização (O)</strong><br>
+                        Limpeza de bases e estruturação de dados.
+                    </li>
+                    <li style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
+                        <strong>Encontro 2: Eficiência (E)</strong><br>
+                        Fórmulas lógicas (SE, E, OU) e de busca (PROCV, PROCX).
+                    </li>
+                    <li style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
+                        <strong>Encontro 3: Análise</strong><br>
+                        Tabelas Dinâmicas avançadas e inteligência de dados.
+                    </li>
+                    <li>
+                        <strong>Encontro 4: Liberdade (L)</strong><br>
+                        Montagem do Dashboard Final e Automação.
+                    </li>
+                </ul>
+                <br>
+                <p style="font-size: 0.9rem; color: #666;">*Todas as aulas ficam gravadas caso você perca algum dia.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="oferta" class="oferta">
+        <div class="container">
+            <span class="vagas-alert">⚠️ Restam poucas vagas para esta turma</span>
+            <h2>Participe da Próxima Turma</h2>
+            <p>Mentoria em Grupo + Gravações + Material de Apoio</p>
+            
+            <div class="preco-box">
+                <p style="text-decoration: line-through; color: #777;">De R$ 997,00</p>
+                <p class="preco-por">R$ 497,00</p>
+                <p>ou 12x de R$ 49,90</p>
+            </div>
+            <br>
+            <a href="LINK_DO_CHECKOUT" class="btn">QUERO MINHA VAGA AGORA</a>
+            
+            <div class="garantia" style="margin-top: 30px;">
+                <p>🛡️ Garantia incondicional de 7 dias.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Método OEL - Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
